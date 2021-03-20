@@ -6,7 +6,7 @@ from torch.utils.data import Dataset
 import logging
 
 
-class MyNewSourceDataset(Dataset):
+class CUBDataset(Dataset):
     base_folder = 'CUB_200_2011/images'  # Base dataset path
     """
     add documentation on how this dataset works
@@ -16,12 +16,12 @@ class MyNewSourceDataset(Dataset):
     """
 
     def __init__(self, cfg, data_source, path, split, dataset_name):
-        super(MyNewSourceDataset, self).__init__()
+        super(CUBDataset, self).__init__()
         assert data_source in [
             "disk_filelist",
             "disk_folder",
-            "my_data_source"
-        ], "data_source must be either disk_filelist or disk_folder or my_data_source"
+            "cub_dataset"
+        ], "data_source must be either disk_filelist or disk_folder or cub_dataset"
         self.cfg = cfg
         self.split = split
         self.dataset_name = dataset_name

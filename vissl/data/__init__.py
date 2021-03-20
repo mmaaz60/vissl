@@ -18,6 +18,7 @@ from vissl.data.ssl_dataset import GenericSSLDataset
 from vissl.data.synthetic_dataset import SyntheticImageDataset
 from vissl.data.torchvision_dataset import TorchvisionDataset
 from vissl.utils.misc import setup_multiprocessing_method
+from vissl.data.cub_dataset import CUBDataset
 
 
 __all__ = [
@@ -32,6 +33,7 @@ DATASET_SOURCE_MAP = {
     "disk_folder": DiskImageDataset,
     "torchvision_dataset": TorchvisionDataset,
     "synthetic": SyntheticImageDataset,
+    "cub_dataset": CUBDataset,
 }
 
 
