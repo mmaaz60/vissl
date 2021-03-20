@@ -13,8 +13,8 @@ config:
   DATA:
     NUM_DATALOADER_WORKERS: 5
     TRAIN:
-      DATA_SOURCES: [disk_folder]
-      DATASET_NAMES: [imagenet1k_folder]
+      DATA_SOURCES: [cub_dataset]
+      DATASET_NAMES: [cub_dataset]
       BATCHSIZE_PER_REPLICA: 64
       LABEL_TYPE: sample_index    # just an implementation detail. Label isn't used
       TRANSFORMS:
@@ -38,6 +38,7 @@ config:
       MMAP_MODE: True
       COPY_TO_LOCAL_DISK: False
       COPY_DESTINATION_DIR: /tmp/imagenet1k/
+      DATA_PATHS: ["/home/student/Downloads/CUB_200_2011"]
       DROP_LAST: True
   TRAINER:
     TRAIN_STEP_NAME: standard_train_step
@@ -118,9 +119,9 @@ config:
           # lengths: [0.002563, 0.997437]     # 5ep IG-1B = 50 ep IG-100M
   DISTRIBUTED:
     BACKEND: nccl
-    NUM_NODES: 8
-    NUM_PROC_PER_NODE: 8
-    RUN_ID: xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    NUM_NODES: 1
+    NUM_PROC_PER_NODE: 1
+    RUN_ID: auto
     INIT_METHOD: tcp
     NCCL_DEBUG: True
   MACHINE:
@@ -129,3 +130,4 @@ config:
     AUTO_RESUME: True
     CHECKPOINT_FREQUENCY: 5
     CHECKPOINT_ITER_FREQUENCY: -1  # set this variable to checkpoint every few iterations
+    DIR: checkpoints/simclr_cub
